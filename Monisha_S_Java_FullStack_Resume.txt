@@ -1,0 +1,80 @@
+================================================================================
+                                 MONISHA S
+                       JAVA FULL STACK DEVELOPER
+================================================================================
+
+Contact Information:
+--------------------
+Email    : monishamonisaravanan08@gmail.com
+Phone    : +91 63832 49841
+Location : Bangalore, India (Immediate Joiner)
+LinkedIn : https://linkedin.com/in/monishaaravanan
+GitHub   : https://github.com/monishasaravanan2004
+
+--------------------------------------------------------------------------------
+PROFESSIONAL SUMMARY
+--------------------------------------------------------------------------------
+Enthusiastic and results-driven B.Tech Information Technology graduate with strong
+expertise in Java Core OOP, Spring Boot REST APIs, MySQL database design, and
+ReactJS frontend development. Proven track record through internships at bDreams
+Global Solution, Besant Technologies, and NLC India Limited.
+
+--------------------------------------------------------------------------------
+EDUCATION
+--------------------------------------------------------------------------------
+Sri Ramanujar Engineering College | Chennai, TN
+Degree : Bachelor of Technology in Information Technology (B.Tech IT)
+Period : 2022 - 2026
+CGPA   : 8.93 / 10.0
+
+--------------------------------------------------------------------------------
+INTERNSHIP & WORK EXPERIENCE
+--------------------------------------------------------------------------------
+1. bDreams Global Solution
+   Role   : Java Full Stack Intern
+   Period : Present (Current)
+   • Developing scalable web application modules using Java Spring Boot REST APIs.
+   • Designing optimized MySQL relational database schemas and JPA repositories.
+   • Building dynamic responsive web interface components using ReactJS.
+
+2. Besant Technologies
+   Role   : Java Full Stack Trainee & Intern
+   Period : 2025 - 2026
+   • Completed comprehensive full-stack training in Java, Spring Boot, REST APIs, MySQL, and ReactJS.
+   • Engineered backend controllers and service layers with dependency injection.
+
+3. NLC India Limited
+   Role   : Web Development Intern (Mines Digitalisation)
+   Period : Aug 2024 - Sep 2024
+   • Completed Web Development internship training focused on digitalisation of mining operations at L&D Centre.
+
+--------------------------------------------------------------------------------
+FEATURED PROJECTS
+--------------------------------------------------------------------------------
+1. EverBloom - Event Management System
+   Tech Stack : Java, Spring Boot, MySQL, HTML, CSS
+   Details    : Developed full-stack event management platform with Customer, Vendor,
+                and Admin management features powered by Spring Boot REST APIs.
+
+2. Smart Workforce Analytics Dashboard
+   Tech Stack : ReactJS, JavaScript, HTML, CSS, LocalStorage
+   Details    : Designed responsive HR analytics dashboard presenting employee KPI metrics
+                with interactive chart components and real-time filters.
+
+3. Laya Bharatanatyam Website
+   Tech Stack : HTML, CSS, JavaScript
+   Details    : Built elegant responsive website showcasing classical arts performance schedule,
+                course curriculum, and video portfolio.
+
+--------------------------------------------------------------------------------
+TECHNICAL SKILLS
+--------------------------------------------------------------------------------
+Languages   : Java (Core & Advanced), JavaScript (ES6+)
+Backend     : Spring Boot, RESTful Web Services, Hibernate / JPA, Maven
+Frontend    : ReactJS, HTML5, CSS3, Responsive Web Design
+Database    : MySQL, Relational Database Management Systems
+Tools & OS  : Git, GitHub, Postman API Tester, VS Code, Windows
+
+================================================================================
+                               END OF RESUME
+================================================================================
