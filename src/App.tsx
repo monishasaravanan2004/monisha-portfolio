@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -76,23 +76,19 @@ const AuroraGlow: React.FC = () => {
 // Visual Loading Preloader
 const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
-  const [fadeExit, setFadeExit] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
-        const next = prev + Math.floor(Math.random() * 8) + 4;
+        const next = prev + 12;
         if (next >= 100) {
           clearInterval(interval);
-          setTimeout(() => {
-            setFadeExit(true);
-            setTimeout(onComplete, 500);
-          }, 250);
+          setTimeout(onComplete, 200);
           return 100;
         }
         return next;
       });
-    }, 40);
+    }, 30);
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -100,12 +96,7 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
   return (
     <div 
       id="preloader" 
-      className="fixed inset-0 bg-[#08070B] z-[99999] flex flex-col items-center justify-center transition-all duration-500 ease-out"
-      style={{
-        opacity: fadeExit ? 0 : 1,
-        transform: fadeExit ? 'scale(1.04)' : 'scale(1)',
-        pointerEvents: fadeExit ? 'none' : 'auto'
-      }}
+      className="fixed inset-0 bg-[#08070B] z-[99999] flex flex-col items-center justify-center transition-all duration-300 ease-out"
     >
       <div className="preloader-logo text-3xl md:text-5xl font-black font-heading tracking-[6px] text-[#FFFFFF] mb-6">
         <span>MONISHA </span>
@@ -131,45 +122,43 @@ export const App: React.FC = () => {
     <ThemeProvider>
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       
-      {!isLoading && (
-        <BrowserRouter basename={import.meta.env.BASE_URL || '/monisha-portfolio'}>
-          {/* Custom Trail Cursor */}
-          <CustomCursor />
-          
-          {/* Noise texture overlay */}
-          <div className="noise-overlay"></div>
-          
-          {/* Scroll progress indicators */}
-          <ScrollProgress />
-          
-          {/* Aurora backlit glow */}
-          <AuroraGlow />
-          
-          {/* Ambient Aurora Orbs */}
-          <div className="aurora-bg">
-            <div className="aurora-orb orb-1"></div>
-            <div className="aurora-orb orb-2"></div>
-            <div className="aurora-orb orb-3"></div>
-            <div className="aurora-orb orb-4"></div>
-          </div>
+      <HashRouter>
+        {/* Custom Trail Cursor */}
+        <CustomCursor />
+        
+        {/* Noise texture overlay */}
+        <div className="noise-overlay"></div>
+        
+        {/* Scroll progress indicators */}
+        <ScrollProgress />
+        
+        {/* Aurora backlit glow */}
+        <AuroraGlow />
+        
+        {/* Ambient Aurora Orbs */}
+        <div className="aurora-bg">
+          <div className="aurora-orb orb-1"></div>
+          <div className="aurora-orb orb-2"></div>
+          <div className="aurora-orb orb-3"></div>
+          <div className="aurora-orb orb-4"></div>
+        </div>
 
-          <div id="app-root" className="relative z-10 flex flex-col min-h-screen">
-            <Navbar />
-            
-            <main className="flex-grow">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-            
-            <Footer />
-            
-            {/* Moni AI Floating Chat widget */}
-            <MoniAI />
-          </div>
-        </BrowserRouter>
-      )}
+        <div id="app-root" className="relative z-10 flex flex-col min-h-screen">
+          <Navbar />
+          
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          
+          <Footer />
+          
+          {/* Moni AI Floating Chat widget */}
+          <MoniAI />
+        </div>
+      </HashRouter>
     </ThemeProvider>
   );
 };
