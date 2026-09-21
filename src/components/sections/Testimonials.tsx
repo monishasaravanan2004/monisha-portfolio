@@ -15,17 +15,19 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, quote, av
     <div 
       ref={elementRef}
       {...tiltProps}
-      className="glass-card p-6 border-[rgba(255,255,255,0.06)] flex flex-col justify-between gap-4 tilt-card min-w-[280px] md:min-w-[320px] scroll-snap-align-start"
+      className="glass-card p-6 border-[#D8A7FF]/30 bg-[#0E0C16] flex flex-col justify-between gap-4 tilt-card min-w-[280px] md:min-w-[320px] scroll-snap-align-start hover:border-[#D8A7FF]/60 hover:shadow-[0_0_25px_rgba(216,167,255,0.2)] transition-all text-left"
     >
-      <p className="text-xs text-[var(--text-secondary)] italic leading-relaxed">
+      <p className="text-xs text-[#E4DFF0] italic leading-relaxed font-normal">
         "{quote}"
       </p>
       
-      <div className="flex items-center gap-3 border-t border-[var(--border-card)] pt-3 mt-1">
-        <div className="w-9 h-9 rounded-full bg-[var(--bg-main)] border border-[var(--border-card)] flex items-center justify-center text-sm">{avatar}</div>
+      <div className="flex items-center gap-3 border-t border-[#D8A7FF]/20 pt-3 mt-1">
+        <div className="w-10 h-10 rounded-full bg-[#08070B] border border-[#D8A7FF]/40 flex items-center justify-center text-base shadow-sm shrink-0">
+          {avatar}
+        </div>
         <div>
-          <h4 className="text-xs font-bold text-[var(--text-primary)]">{name}</h4>
-          <p className="text-[10px] text-[var(--accent)] font-semibold">{role}</p>
+          <h4 className="text-xs font-bold text-[#FFFFFF] font-heading">{name}</h4>
+          <p className="text-[11px] text-[#D8A7FF] font-semibold font-mono mt-0.5">{role}</p>
         </div>
       </div>
     </div>
@@ -55,14 +57,14 @@ export const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-24 px-6 md:px-16 relative z-10 border-b border-[var(--border-card)] overflow-hidden">
+    <section id="testimonials" className="py-24 px-6 md:px-16 relative z-10 border-b border-[#D8A7FF]/20 bg-[#08070B] overflow-hidden">
       <div className="max-w-[1300px] mx-auto w-full">
         
         <div className="section-header mb-16 text-center">
-          <span className="section-label text-xs uppercase tracking-[3px] text-[var(--accent)] font-bold mb-2 block">
+          <span className="section-label text-xs uppercase tracking-[3px] text-[#D8A7FF] font-extrabold mb-2 block drop-shadow-[0_0_8px_rgba(216,167,255,0.4)]">
             Testimonials
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight text-[var(--text-primary)]">
+          <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight text-[#FFFFFF]">
             What professionals <span className="bg-gradient-to-r from-[#D8A7FF] to-[#FBBF24] bg-clip-text text-transparent">say about my work</span>.
           </h2>
         </div>
