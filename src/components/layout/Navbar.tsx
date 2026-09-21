@@ -38,7 +38,6 @@ export const Navbar: React.FC = () => {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // Activate if element is near the middle of viewport
           if (rect.top <= window.innerHeight * 0.35) {
             current = id;
           }
@@ -51,6 +50,24 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      window.history.pushState(null, '', href);
+    }
+  };
+
   return (
     <header 
       id="header"
@@ -58,7 +75,11 @@ export const Navbar: React.FC = () => {
         isScrolled ? 'py-4 bg-[var(--bg-main)]/85 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' : 'bg-transparent'
       }`}
     >
-      <a href="#hero" className="logo text-xl font-extrabold font-heading tracking-wider flex items-center gap-1">
+      <a 
+        href="#hero" 
+        onClick={(e) => scrollToSection(e, '#hero')}
+        className="logo text-xl font-extrabold font-heading tracking-wider flex items-center gap-1"
+      >
         <span className="bg-gradient-to-r from-[#D8A7FF] via-[#E8C5FF] to-[#FBBF24] bg-clip-text text-transparent">MONISHA</span>
         <span className="logo-dot"></span>
       </a>
@@ -96,7 +117,7 @@ export const Navbar: React.FC = () => {
           <a
             key={link.href}
             href={link.href}
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, link.href)}
             className={`nav-link text-[11px] xl:text-xs font-semibold tracking-wide transition-all relative py-1 ${
               activeSection === link.href.slice(1)
                 ? 'text-[#D8A7FF] font-extrabold active-link drop-shadow-[0_0_8px_rgba(216,167,255,0.4)]'
@@ -111,7 +132,7 @@ export const Navbar: React.FC = () => {
           <ThemeToggle />
           <a 
             href="#contact" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, '#contact')}
             className="nav-cta bg-gradient-to-r from-[#D8A7FF] to-[#FBBF24] text-[#08070B] px-4 py-2 rounded-xl text-xs font-extrabold shadow-[0_0_15px_rgba(216,167,255,0.3)] hover:scale-105 transition-all"
           >
             Hire Me

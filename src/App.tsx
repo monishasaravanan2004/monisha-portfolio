@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import NotFound from './pages/NotFound';
 import CustomCursor from './components/common/CustomCursor';
 import MoniAI from './components/sections/MoniAI';
 import './App.css';
@@ -118,11 +117,29 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  // Auto-scroll on initial load if hash is present
+  useEffect(() => {
+    if (!isLoading && window.location.hash) {
+      const targetId = window.location.hash.replace('#', '').replace('/', '');
+      if (targetId) {
+        setTimeout(() => {
+          const el = document.getElementById(targetId);
+          if (el) {
+            const headerOffset = 80;
+            const elementPosition = el.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    }
+  }, [isLoading]);
+
   return (
     <ThemeProvider>
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       
-      <HashRouter>
+      <BrowserRouter basename="/monisha-portfolio">
         {/* Custom Trail Cursor */}
         <CustomCursor />
         
@@ -148,8 +165,9 @@ export const App: React.FC = () => {
           
           <main className="flex-grow">
             <Routes>
+              {/* Map all section anchors and root paths to Home */}
               <Route path="/" element={<Home />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </main>
           
@@ -158,7 +176,7 @@ export const App: React.FC = () => {
           {/* Moni AI Floating Chat widget */}
           <MoniAI />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
